@@ -51,7 +51,17 @@ public class BoardGame extends Toy {
 
 	// toString method
 	public String toString() {
-		return super.toString() + ", Number of Players: " + minNumOfPlayers + "-" + maxNumOfPlayers + ", Designer(s): " + designers;
+		return "Category: BoardGame, " + super.toString() + ", Number of Players: " + minNumOfPlayers + "-" + maxNumOfPlayers + ", Designer(s): "
+				+ designers;
+	}
+
+	/**
+	 * Format for the board game toy information when writing to file
+	 * 
+	 * @return information format
+	 */
+	public String format() {
+		return super.format() + ";" + minNumOfPlayers + "-" + maxNumOfPlayers + ";" + designers;
 	}
 
 }

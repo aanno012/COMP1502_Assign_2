@@ -29,7 +29,16 @@ public class Puzzle extends Toy {
 
 	// toString method
 	public String toString() {
-		return super.toString() + ", Puzzle Type: " + puzzleType;
+		return "Category: Puzzle, " + super.toString() + ", Puzzle Type: " + puzzleType;
+	}
+
+	/**
+	 * Format for the puzzle toy information when writing to file
+	 * 
+	 * @return information format
+	 */
+	public String format() {
+		return super.format() + ";" + puzzleType;
 	}
 
 }

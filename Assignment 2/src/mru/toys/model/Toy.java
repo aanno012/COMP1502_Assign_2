@@ -81,7 +81,17 @@ public abstract class Toy {
 
 	// toString method
 	public String toString() {
-		return "Serial Number: " + serialNumber + ", Name: " + name + ", Brand: " + brand + ", Price: $" + price + ", Age Appropriate: "
+		return "Serial Number: " + serialNumber + ", Name: " + name + ", Brand: " + brand + ", Price: $" + price + ", Available Count: "
+				+ availableCount + ", Age Appropriate: "
 				+ ageAppropriate;
+	}
+
+	/**
+	 * Format for the toy information when writing to file
+	 * 
+	 * @return information format
+	 */
+	public String format() {
+		return serialNumber + ";" + name + ";" + brand + ";" + price + ";" + availableCount + ";" + ageAppropriate;
 	}
 }

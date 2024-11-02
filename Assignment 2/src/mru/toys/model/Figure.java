@@ -29,7 +29,15 @@ public class Figure extends Toy {
 
 	// toString method
 	public String toString() {
-		return super.toString() + ", Classification: " + classification;
+		return "Category: Figure, " + super.toString() + ", Classification: " + classification;
 	}
 
+	/**
+	 * Format for the figure toy information when writing to file
+	 * 
+	 * @return information format
+	 */
+	public String format() {
+		return super.format() + ";" + classification;
+	}
 }

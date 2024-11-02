@@ -40,6 +40,15 @@ public class Animal extends Toy {
 
 	// toString method
 	public String toString() {
-		return super.toString() + ", Material: " + material + ", Size: " + size;
+		return "Category: Animal, " + super.toString() + ", Material: " + material + ", Size: " + size;
+	}
+
+	/**
+	 * Format for the animal toy information when writing to file
+	 * 
+	 * @return information format
+	 */
+	public String format() {
+		return super.format() + ";" + material + ";" + size;
 	}
 }

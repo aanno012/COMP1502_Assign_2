@@ -4,23 +4,31 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import mru.toys.model.Animal;
 import mru.toys.model.BoardGame;
 import mru.toys.model.Figure;
 import mru.toys.model.Puzzle;
 import mru.toys.model.Toy;
+import mru.toys.view.ToyMenu;
 
 public class ToyManager {
 
 	// Variables
 	private final String FILE_PATH = "res/toys.txt";
 	ArrayList<Toy> toys;
+	ToyMenu toyMenu;
+	Scanner input;
 
 	public ToyManager() throws IOException {
+		input = new Scanner(System.in);
 		toys = new ArrayList<Toy>();
+		toyMenu = new ToyMenu();
 		loadToyData();
+		launchToyApp();
 //		printAllToys(toys); // Printing to console for testing.
 
 		// THE COMMENTED CODE BELOW WILL BE USED AS A REFERENCE.
@@ -120,6 +128,75 @@ public class ToyManager {
 		} else {
 			return null;
 		}
+	}
+
+	private void launchToyApp() throws IOException {
+		boolean flag = true;
+		int option;
+
+		while (flag) {
+			option = toyMenu.showMainMenu();
+
+			switch (option) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				removeToy();
+				break;
+			case 4:
+				saveExit(); // Saves and exits the program.
+				flag = false;
+			}
+		}
+	}
+
+	public void removeToy() {
+		// Receiving serial number.
+		String toySerialStr = toyMenu.askSerialNum();
+
+		// Looping through the list
+		Toy removeThisToy = null;
+		for (Toy toy : toys) {
+			if (toy.getSerialNumber().equals(toySerialStr)) {
+				removeThisToy = toy;
+				break;
+			}
+		}
+
+		// Displaying toy information.
+		if (removeThisToy != null) {
+			toyMenu.showFoundMsg();
+			System.out.println();
+			System.out.println("\t" + removeThisToy.toString());
+			System.out.println();
+
+			// Confirmation
+			char ans = toyMenu.askToConfirm();
+			if (ans == 'y') {
+				toys.remove(removeThisToy);
+				toyMenu.showRemoveMsg();
+			}
+
+			// Displays item not found
+		} else {
+			toyMenu.showNotFoundMsg();
+		}
+
+		// Returning to main menu.
+		toyMenu.pressEnter();
+	}
+
+	// Saves and prints to file
+	private void saveExit() throws IOException {
+		File toyFile = new File(FILE_PATH);
+		PrintWriter pw = new PrintWriter(toyFile);
+
+		for (Toy t : toys) {
+			pw.println(t.format()); // The format method is called from the player class.
+		}
+		pw.close();
 	}
 
 	// <----------------MENU METHODS------------------>
