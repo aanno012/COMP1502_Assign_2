@@ -1,6 +1,9 @@
 package mru.toys.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import mru.toys.model.Toy;
 
 public class ToyMenu {
 
@@ -50,6 +53,46 @@ public class ToyMenu {
 		return option;
 	}
 
+	
+	// Prompt;s user for search query
+	public String askSearchQuery() {
+		System.out.println("Enter search term (serial number, name, or type):");
+		return input.nextLine().trim();
+	}
+	
+	// Display search results to the user
+	public void DisplaySearchResults(ArrayList<Toy> searchResults) {
+		System.out.println("Search Results:");
+		for (int i = 0; i < searchResults.size(); i++) {
+			System.out.println("(" + (i + 1) + ")" + searchResults.get(i));
+		}
+	}
+	
+	//Ask user to select a toy from the search result for purchase
+	public int askToySelection(int resultSize) {
+		System.out.print("Enter the number of the toy you want to purchase (or -1 to cancel): ");
+		int selection = input.nextInt();
+		input.nextLine(); //Consume newLine
+		if (selection > 0 && selection <= resultSize) {
+			return selection - 1; // Adjust for zero-based index
+			
+		}
+		return -1; // Indicates cancellation or invalid input
+	}
+	
+	
+	// Show success message for a successful purchase
+	public void ShowPurchaseSuccess(Toy toy) {
+		System.out.println("Sorry, this item is out of stock.");
+	}
+	
+	
+	// Show a message if no items match the search
+	public void ShowNoResultsMessage() {
+		System.out.println("No items match your search criteria.");
+	}
+	
+	
 	// Requests serial number from the user.
 	public String askSerialNum() {
 		boolean flag = true;
