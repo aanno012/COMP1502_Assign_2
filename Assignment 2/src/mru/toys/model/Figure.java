@@ -2,16 +2,34 @@ package mru.toys.model;
 
 public class Figure extends Toy {
 
+	/**
+	 * The class is a subclass of the Toy abstract class.
+	 */
+
 	private char classification; // Action, Doll, or Historic (A, D or H)
 
-	// Standard constructor for Figure Toy type
-	public Figure(String serialNumber, String name, String brand, double price, int availableCount, String ageAppropriate,
+	/**
+	 * Standard constructor for Figure Toy type
+	 * 
+	 * @param serialNumber   10-digit unique number.
+	 * @param name           name of the item
+	 * @param brand          brand name
+	 * @param price          cost of toy
+	 * @param availableCount number of copies in stock
+	 * @param ageAppropriate minimum age to use toy
+	 * @param classification Action, Doll, or Historic (A, D or H)
+	 */
+	public Figure(String serialNumber, String name, String brand, double price, int availableCount, int ageAppropriate,
 			char classification) {
 		super(serialNumber, name, brand, price, availableCount, ageAppropriate);
 		this.classification = classification;
 	}
 
-	// Copy constructor
+	/**
+	 * Copy constructor for Figure toy type
+	 * 
+	 * @param figure figure object
+	 */
 	public Figure(Figure figure) {
 		super(figure.getSerialNumber(), figure.getName(), figure.getBrand(), figure.getPrice(), figure.getAvailableCount(),
 				figure.getAgeAppropriate());
@@ -27,7 +45,9 @@ public class Figure extends Toy {
 		this.classification = classification;
 	}
 
-	// toString method
+	/**
+	 * toString method
+	 */
 	public String toString() {
 		return "Category: Figure, " + super.toString() + ", Classification: " + classification;
 	}

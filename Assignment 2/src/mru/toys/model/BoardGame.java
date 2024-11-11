@@ -2,12 +2,28 @@ package mru.toys.model;
 
 public class BoardGame extends Toy {
 
-	private int minNumOfPlayers; // Minimum number of players to play the game
-	private int maxNumOfPlayers; // Maximum number of players to play the game
+	/**
+	 * The class is a subclass of the Toy abstract class.
+	 */
+
+	private int minNumOfPlayers; // Minimum number of players
+	private int maxNumOfPlayers; // Maximum number of players
 	private String designers; // Name of designers
 
-	// Standard constructor for BoardGame toy type
-	public BoardGame(String serialNumber, String name, String brand, double price, int availableCount, String ageAppropriate,
+	/**
+	 * Standard constructor for BoardGame toy type
+	 * 
+	 * @param serialNumber    10-digit unique number.
+	 * @param name            name of the item
+	 * @param brand           brand name
+	 * @param price           cost of toy
+	 * @param availableCount  number of copies in stock
+	 * @param ageAppropriate  minimum age to use toy
+	 * @param minNumOfPlayers minimum number of players to play the game
+	 * @param maxNumOfPlayers maximum number of players to play the game
+	 * @param designers       name of designers
+	 */
+	public BoardGame(String serialNumber, String name, String brand, double price, int availableCount, int ageAppropriate,
 			int minNumOfPlayers, int maxNumOfPlayers, String designers) {
 		super(serialNumber, name, brand, price, availableCount, ageAppropriate);
 		this.minNumOfPlayers = minNumOfPlayers;
@@ -15,7 +31,11 @@ public class BoardGame extends Toy {
 		this.designers = designers;
 	}
 
-	// Copy constructor
+	/**
+	 * Copy constructor for BoardGame toy type
+	 * 
+	 * @param boardGame board game object
+	 */
 	public BoardGame(BoardGame boardGame) {
 		super(boardGame.getSerialNumber(), boardGame.getName(), boardGame.getBrand(), boardGame.getPrice(), boardGame.getAvailableCount(),
 				boardGame.getAgeAppropriate());
@@ -49,7 +69,9 @@ public class BoardGame extends Toy {
 		this.designers = designers;
 	}
 
-	// toString method
+	/**
+	 * toString method
+	 */
 	public String toString() {
 		return "Category: BoardGame, " + super.toString() + ", Number of Players: " + minNumOfPlayers + "-" + maxNumOfPlayers + ", Designer(s): "
 				+ designers;
