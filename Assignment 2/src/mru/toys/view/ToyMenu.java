@@ -52,6 +52,42 @@ public class ToyMenu {
 		}
 		return option;
 	}
+		// Adding a toy
+		public Toy addToy() {
+			System.out.print("Enter Serial Number: ");
+			String serialNumber = askSerialNum();
+
+			System.out.print("Enter Toy Name: ");
+			String name = input.nextLine().trim();
+
+			System.out.print("Enter Brand: ");
+			String brand = input.nextLine().trim();
+
+			System.out.print("Enter Price: ");
+			double price = input.nextDouble();
+			if (price <= 0) {
+				System.out.println("Price must be positive.");
+				return null;
+			}
+
+			System.out.print("Enter Available Count: ");
+			int availableCount = input.nextInt();
+			if (availableCount < 0) {
+				System.out.println("Available count must be non-negative.");
+				return null;
+			}
+
+			System.out.print("Enter Minimum Age: ");
+			int ageAppropriate = input.nextInt();
+			input.nextLine(); // Consume newline
+
+			System.out.print("Enter Toy Type (Figure, Animal, Puzzle, BoardGame): ");
+			String type = input.nextLine().trim().toLowerCase();
+
+			// Assuming Toy constructor accepts these parameters
+			Toy newToy = new Toy(serialNumber, name, brand, price, availableCount, ageAppropriate, type);
+			return newToy;
+		}
 
 	
 	// Prompt;s user for search query
