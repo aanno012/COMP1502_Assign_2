@@ -30,7 +30,7 @@ public class ToyManager {
 		loadToyData();
 		launchToyApp();
 //		printAllToys(toys); // Printing to console for testing.
-
+		
 		// THE COMMENTED CODE BELOW WILL BE USED AS A REFERENCE.
 		/*
 		 * Toy figure1 = new Figure('A'); // implementing polymorphism
@@ -151,7 +151,27 @@ public class ToyManager {
 			}
 		}
 	}
-
+	
+	
+	// Method to search and purchase toys
+	public void searchToy() {
+		// Prompt user for search term
+		String searchQuery = toyMenu.askSearchQuery();
+		
+		// Temporary List to hold search results
+		ArrayList<Toy> searchResults = new ArrayList<>();
+		
+		// Search through toys List
+		for (Toy toy: toys) {
+			if (toy.getName().equalsIgnoreCase(searchQuery) ||
+					toy.getName().toLowerCase().contains(searchQuery.toLowerCase()) ||
+					toy.getBrand().toLowerCase().contains(searchQuery.toLowerCase()) ||
+					searchResults.add(toy);
+			}
+	}
+	
+	
+	
 	public void removeToy() {
 		// Receiving serial number.
 		String toySerialStr = toyMenu.askSerialNum();
