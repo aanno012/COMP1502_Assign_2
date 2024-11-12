@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"mru.toys.application"},{"l":"mru.toys.controller"},{"l":"mru.toys.exceptions"},{"l":"mru.toys.model"},{"l":"mru.toys.test"},{"l":"mru.toys.view"}];updateSearchResults();

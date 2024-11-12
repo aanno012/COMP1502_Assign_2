@@ -8,6 +8,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import mru.toys.exceptions.InvalidNumberOfPlayersException;
+import mru.toys.exceptions.NegativePriceException;
 import mru.toys.model.Animal;
 import mru.toys.model.BoardGame;
 import mru.toys.model.Figure;
@@ -344,13 +346,55 @@ public class ToyManager {
 		pw.close(); // Closes the PrintWriter object.
 	}
 
-	// <------------MISCELLANEOUS METHODS------------->
+	// <--------------------------EXCEPTION METHODS---------------------------->
+	// All exception methods used for validation can go here.
+	/**
+	 * 
+	 * @param price the price of the toy.
+	 * @return true for positive price
+	 * @throws NegativePriceException shows an error message about the negative
+	 *                                price.
+	 */
+	public static boolean validateToyPrice(double price) throws NegativePriceException {
+
+		// Checks if the price is negative. An exception will be thrown if true.
+		if (price < 0) {
+			throw new NegativePriceException("The price cannot be negative! Only positive values are permitted.");
+		}
+
+		return true; // Returns true if price is positive and bypasses the exception.
+	}
+
+	/**
+	 * 
+	 * @param minPlys the minimum # of players to play the game.
+	 * @param maxPlys the maximum # of players to play the game.
+	 * @return true if no exception is thrown.
+	 * @throws InvalidNumberOfPlayersException shows an error message about the
+	 *                                         number of players.
+	 */
+	public static boolean validateBoardgamePlayers(int minPlys, int maxPlys) throws InvalidNumberOfPlayersException {
+
+		// Compares both number of players and throws an exception if true.
+		if (minPlys > maxPlys) {
+			throw new InvalidNumberOfPlayersException("The minimum number of players cannot exceed the maximum number of players!");
+		}
+
+		return true; // Returns true if the above condition is false or no exception is thrown.
+	}
+
+	// <------------------MISCELLANEOUS METHODS------------------>
 	// All non-specific or extra methods can go here.
 
-	// Printing to console for testing.
+	/**
+	 * Printing to console for testing.
+	 * 
+	 * @param toys an arrayList of all the toys.
+	 */
 	public void printAllToys(ArrayList<Toy> toys) {
 		for (Toy toy : toys) {
 			System.out.println(toy.toString());
 		}
 	}
+
 }
