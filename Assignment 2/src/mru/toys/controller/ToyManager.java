@@ -207,6 +207,7 @@ public class ToyManager {
 		// Returning to main menu.
 		toyMenu.pressEnter();
 	}
+	
 
 	// Saves and prints to file
 	private void saveExit() throws IOException {
@@ -222,6 +223,75 @@ public class ToyManager {
 	// <----------------MENU METHODS------------------>
 	// All methods that corresponds to the menu
 	// options goes here.
+	public Toy createToyFromInput() {
+	    System.out.print("Enter Serial Number: ");
+	    String serialNumber = askSerialNum();
+
+	    System.out.print("Enter Toy Name: ");
+	    String name = input.nextLine().trim();
+	    while (name.isEmpty()) {
+	        System.out.println("Please enter a valid name.");
+	        System.out.print("Enter Toy Name: ");
+	        name = input.nextLine().trim();
+	    }
+
+	    System.out.print("Enter Brand: ");
+	    String brand = input.nextLine().trim();
+	    while (brand.isEmpty()) {
+	        System.out.println("Please enter a valid brand.");
+	        System.out.print("Enter Brand: ");
+	        brand = input.nextLine().trim();
+	    }
+
+	    double price = -1;
+	    while (price <= 0) {
+	        System.out.print("Enter Price: ");
+	        if (input.hasNextDouble()) {
+	            price = input.nextDouble();
+	            if (price <= 0) {
+	                System.out.println("Price must be positive. Enter a valid price.");
+	            }
+	        } else {
+	            System.out.println("Enter a numeric value for price.");
+	            input.next(); // Consume invalid input
+	        }
+	    }
+
+	    int availableCount = -1;
+	    while (availableCount < 0) {
+	        System.out.print("Enter Available Count: ");
+	        if (input.hasNextInt()) {
+	            availableCount = input.nextInt();
+	            if (availableCount < 0) {
+	                System.out.println("Please enter a valid count.");
+	            }
+	        } else {
+	            System.out.println("Invalid input.");
+	            input.next(); // Consume invalid input
+	        }
+	    }
+
+	    input.nextLine(); // Consume newline after number input
+
+	    System.out.print("Enter Minimum Age: ");
+	    int ageAppropriate = input.nextInt();
+	    input.nextLine(); // Consume newline
+
+	    System.out.print("Enter Minimum Players: ");
+	    int minimumPlayers = input.nextInt();
+	    input.nextLine(); // Consume newline
+
+	    System.out.print("Enter Maximum Players: ");
+	    int maximumPlayers = input.nextInt();
+	    input.nextLine(); // Consume newline
+
+	    System.out.print("Enter Designer Names: ");
+	    String designerNames = input.nextLine().trim();
+
+	    // Now you can create a Toy object using the collected information
+	    Toy toy = new Toy(serialNumber, name, brand, price, availableCount, ageAppropriate, minimumPlayers, maximumPlayers, designerNames);
+	    return toy;
+	}
 
 	// <------------MISCELLANEOUS METHODS------------->
 	// All non-specific or extra methods can go here.
